@@ -8,6 +8,17 @@ if(has("win32") || has("win95") || has("win64") || has("win16")) "判定当前�
 else
     let g:iswindows=0
 endif
+if(g:iswindows==1) "允许鼠标的使用
+    "防止linux终端下无法拷贝
+    if has('mouse')
+        set mouse=a
+    endif
+    au GUIEnter * simalt ~x
+endif
+"字体的设置
+set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI "记住空格用下划线代替哦
+set gfw=幼圆:h10:cGB2312
+
 set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
 syntax on"打开高亮
 if has("autocmd")
@@ -44,16 +55,6 @@ set nowrap "不自动换行
 set hlsearch "高亮显示结果
 set incsearch "在输入要搜索的文字时，vim会实时匹配
 set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
-if(g:iswindows==1) "允许鼠标的使用
-    "防止linux终端下无法拷贝
-    if has('mouse')
-        set mouse=a
-    endif
-    au GUIEnter * simalt ~x
-endif
-"字体的设置
-set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI "记住空格用下划线代替哦
-set gfw=幼圆:h10:cGB2312
 
 
 
