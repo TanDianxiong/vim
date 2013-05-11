@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/search/ziyuan/xiaoshuo2nd/xiaoshuo'
 let g:netrw_dirhist_2='/search/ziyuan/xiaoshuo2nd/ofrag'
+let g:netrw_dirhist_3='/search/ziyuan/xiaoshuo2nd/xiaoshuo/config'
+let g:netrw_dirhist_4='/search/ziyuan/upload/web'
