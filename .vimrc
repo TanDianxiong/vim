@@ -148,6 +148,35 @@ nmap wm :WMToggle<cr>
 
 "文件浏览器NERD_tree配置
 map <C-n> :NERDTreeToggle<CR>
+" loaded_nerd_tree 不使用NerdTree脚本"
+let NERDChristmasTree=0 "让Tree把自己给装饰得多姿多彩漂亮点
+let NERDTreeAutoCenter=0 "控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
+let NERDTreeAutoCenterThreshold=8 "与NERDTreeAutoCenter配合使用
+" NERDTreeCaseSensitiveSort 排序时是否大小写敏感
+let NERDTreeChDirMode=2 "确定是否改变Vim的CWD
+" NERDTreeHighlightCursorline 是否高亮显示光标所在行
+" NERDTreeHijackNetrw 是否使用:edit命令时打开第二NerdTree
+" NERDTreeIgnore 默认的“无视”文
+" NERDTreeBookmarksFile 指定书签文件
+" NERDTreeMouseMode 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
+" NERDTreeQuitOnOpen 打开文件后是否关闭NerdTree窗口
+" NERDTreeShowBookmarks 是否默认显示书签列表
+" NERDTreeShowFiles 是否默认显示文件
+let NERDTreeShowHidden=1 "是否默认显示隐藏文件
+let NERDTreeShowLineNumbers=1 "是否默认显示行号
+" NERDTreeSortOrder 排序规则
+" NERDTreeStatusline 窗口状态栏
+" NERDTreeWinPos 窗口位置（'left' or 'right'）
+" NERDTreeWinSize 窗口宽
+let NERDTreeShowFiles=1
+let NERDTreeWinPos='left'
+let NERDTreeWinSize=38
+" autocmd VimEnter * NERDTree
+" 启动Vim时自动打开nerdtree
+let NERDTreeShowBookmarks=1
+"一直显示书签
+let NERDTreeChDirMode=2
+"打开书签时，自动将Vim的pwd设为打开的目录，如果你的项目有tags文件，你会发现这个命令很有帮助
 
 "使用cscope
 :set cscopequickfix=s-,c-,d-,i-,t-,e-
@@ -180,4 +209,6 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 在搜索的时候忽略大小写 
 set ignorecase 
 
+"git命令自动补全
+"source ~/.vim/doc/git-completion.bash
 
