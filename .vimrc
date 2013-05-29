@@ -154,7 +154,7 @@ let NERDTreeAutoCenter=0 "控制当光标移动超过一定距离时，是否自
 let NERDTreeAutoCenterThreshold=8 "与NERDTreeAutoCenter配合使用
 " NERDTreeCaseSensitiveSort 排序时是否大小写敏感
 let NERDTreeChDirMode=2 "确定是否改变Vim的CWD
-" NERDTreeHighlightCursorline 是否高亮显示光标所在行
+let NERDTreeHighlightCursorline=1 "是否高亮显示光标所在行
 " NERDTreeHijackNetrw 是否使用:edit命令时打开第二NerdTree
 " NERDTreeIgnore 默认的“无视”文
 " NERDTreeBookmarksFile 指定书签文件
@@ -209,6 +209,22 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 在搜索的时候忽略大小写 
 set ignorecase 
 
-"git命令自动补全
-"source ~/.vim/doc/git-completion.bash
+"Doxygen风格注释
+let g:DoxygenToolkit_commentType = "PHP"
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
+let g:DoxygenToolkit_paramTag_pre="@Param " 
+let g:DoxygenToolkit_returnTag="@Returns   " 
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
+let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
+let g:DoxygenToolkit_authorName="chenxiaonan" 
+let g:DoxygenToolkit_licenseTag="My own license"  
 
+"indent guides 函数对齐线
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3 
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4 
+"python语法检查
+if has("gui_running") 
+    highlight SpellBad term=underline gui=undercurl guisp=Orange 
+endif 
