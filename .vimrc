@@ -51,7 +51,7 @@ retab!
 "去掉vim错误时的发声
 set vb t_vb=
 
-set nowrap "不自动换行
+"set nowrap "不自动换行
 set hlsearch "高亮显示结果
 set incsearch "在输入要搜索的文字时，vim会实时匹配
 set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
@@ -170,7 +170,7 @@ let NERDTreeShowLineNumbers=1 "是否默认显示行号
 " NERDTreeWinSize 窗口宽
 let NERDTreeShowFiles=1
 let NERDTreeWinPos='left'
-let NERDTreeWinSize=38
+"let NERDTreeWinSize=38
 " autocmd VimEnter * NERDTree
 " 启动Vim时自动打开nerdtree
 let NERDTreeShowBookmarks=1
@@ -228,3 +228,16 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 if has("gui_running") 
     highlight SpellBad term=underline gui=undercurl guisp=Orange 
 endif 
+
+"align 配置
+set nocp 
+filetype plugin on 
+
+"---------------------------------------------------------------
+" csupport
+"---------------------------------------------------------------
+let g:C_GlobalTemplateFile=$HOME."/.vim/c-support/templates/Templates"
+let g:C_LocalTemplateFile=$HOME."/.vim/c-support/templates/Templates"
+let g:C_CodeSnippets=$HOME."/.vim/c-support/codesnippets"
+"let g:C_Styles = {'*.c,*.h' : 'default', '*.cc,*.cpp,*.hh' : 'CPP'}
+let g:C_Styles = { '.c,.h' : 'C', '.cc,.cpp,.c++,.C,.hh,.h++,*.H' : 'CPP'  }
