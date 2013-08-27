@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/search/ziyuan/app2nd'
-let g:netrw_dirhist_2='/search/ziyuan/kan/adminnew'
-let g:netrw_dirhist_3='/search/sean/vim/.vim/c-support/templates'
-let g:netrw_dirhist_4='/search/sean/test/c/unix/chapter3'
-let g:netrw_dirhist_5='/search/sean/vim/.vim/plugin'
-let g:netrw_dirhist_6='/search/ziyuan/kan5nd/admin'
-let g:netrw_dirhist_7='/search/sean/test/c/cs/chapter3'
-let g:netrw_dirhist_8='/search/ziyuan/app2nd/web'
-let g:netrw_dirhist_9='/search/ziyuan/xiaohua2nd/cron/controllers'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/search/sean/vim/.vim'

@@ -241,3 +241,17 @@ let g:C_LocalTemplateFile=$HOME."/.vim/c-support/templates/Templates"
 let g:C_CodeSnippets=$HOME."/.vim/c-support/codesnippets"
 "let g:C_Styles = {'*.c,*.h' : 'default', '*.cc,*.cpp,*.hh' : 'CPP'}
 let g:C_Styles = { '.c,.h' : 'C', '.cc,.cpp,.c++,.C,.hh,.h++,*.H' : 'CPP'  }
+
+"ctrlp.vim cofig
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$','file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+
+"powerline
+let g:Powerline_symbols = 'fancy'
+set nocompatible
+set t_Co=256
+let g:Powerline_cache_enabled = 1
+let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
+set laststatus=2   " Always show the statusline"
