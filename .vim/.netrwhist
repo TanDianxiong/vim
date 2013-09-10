@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/search/sean/vim/.vim'
+let g:netrw_dirhist_2='/search/sean/cms/DedeCMS-V5.7-UTF8-SP1/uploads'
+let g:netrw_dirhist_3='/search/sean/cms/DedeCMS-V5.7-UTF8-SP1/uploads/include'
+let g:netrw_dirhist_4='/search/sean/cms/docs'
+let g:netrw_dirhist_5='/search/ziyuan/xiaoshuospider/xiaoshuospider'
+let g:netrw_dirhist_6='/search/ziyuan/xiaoshuo2nd'
+let g:netrw_dirhist_7='/search/ziyuan/xiaoshuospider/xiaoshuospider'

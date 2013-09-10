@@ -2,6 +2,8 @@
 set encoding=utf-8
 "显示行号
 set nu 
+"set cursorline "高亮显示光标所在行
+"set cursorcolumn"高亮显示光标所在行
 
 if(has("win32") || has("win95") || has("win64") || has("win16")) "判定当前操作系统类型
     let g:iswindows=1
@@ -16,8 +18,10 @@ if(g:iswindows==1) "允许鼠标的使用
     au GUIEnter * simalt ~x
 endif
 "字体的设置
-set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI "记住空格用下划线代替哦
-set gfw=幼圆:h10:cGB2312
+""set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI "记住空格用下划线代替哦
+""set gfw=幼圆:h10:cGB2312
+set bg=dark
+colorscheme desert
 
 set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
 syntax on"打开高亮
@@ -142,12 +146,21 @@ map <F4> :TagbarToggle<CR>
 let mapleader = ","
 let NERDShutUp=1
 
+"代码折叠
+set foldmethod=indent "折叠方式
+set foldnestmax=10 "最大折叠层级 
+set nofoldenable "默认不折叠 
+set foldlevel=1
+"highlight Folded guibg=grey guifg=blue
+"highlight FoldColumn guibg=darkgrey guifg=white
+
 "文件浏览的配置
 "let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr>
+"nmap wm :WMToggle<cr>
 
 "文件浏览器NERD_tree配置
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
+map ne :NERDTreeToggle<CR>
 " loaded_nerd_tree 不使用NerdTree脚本"
 let NERDChristmasTree=0 "让Tree把自己给装饰得多姿多彩漂亮点
 let NERDTreeAutoCenter=0 "控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
@@ -163,7 +176,7 @@ let NERDTreeHighlightCursorline=1 "是否高亮显示光标所在行
 " NERDTreeShowBookmarks 是否默认显示书签列表
 " NERDTreeShowFiles 是否默认显示文件
 let NERDTreeShowHidden=1 "是否默认显示隐藏文件
-let NERDTreeShowLineNumbers=1 "是否默认显示行号
+let NERDTreeShowLineNumbers=0 "是否默认显示行号
 " NERDTreeSortOrder 排序规则
 " NERDTreeStatusline 窗口状态栏
 " NERDTreeWinPos 窗口位置（'left' or 'right'）
@@ -226,7 +239,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4 
 "python语法检查
 if has("gui_running") 
-    highlight SpellBad term=underline gui=undercurl guisp=Orange 
+    highlight SpellBad term=underline gui=undercurl guisp=Green
 endif 
 
 "align 配置
@@ -253,5 +266,5 @@ let g:Powerline_symbols = 'fancy'
 set nocompatible
 set t_Co=256
 let g:Powerline_cache_enabled = 1
-let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
+"let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
 set laststatus=2   " Always show the statusline"
