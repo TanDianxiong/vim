@@ -1,3 +1,34 @@
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+"  " required! 
+Bundle 'gmarik/vundle'
+
+Bundle 'https://github.com/scrooloose/nerdtree.git'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'fholgado/minibufexpl.vim'
+
+Bundle 'AutoComplPop'
+Bundle 'ctags.vim'
+Bundle 'DoxygenToolkit.vim'
+Bundle 'JSON.vim'
+Bundle 'Markdown'
+Bundle 'nerdtree'
+Bundle 'pydoc.vim'
+Bundle 'pyflakes.vim'
+Bundle 'python.vim'
+Bundle 'surround.vim'
+Bundle 'Tagbar'
+Bundle 'UltiSnips'
+Bundle 'vim-indent-guides'
+Bundle 'xml.vim'
+
+filetype plugin indent on     " required!
+
 "设置编码
 set encoding=utf-8
 "显示行号
@@ -53,93 +84,15 @@ set expandtab
 "强制已有的tab转化为4个空格
 retab!
 "去掉vim错误时的发声
-set vb t_vb=
+"set vb t_vb=
 
 "set nowrap "不自动换行
 set hlsearch "高亮显示结果
 set incsearch "在输入要搜索的文字时，vim会实时匹配
 set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
 
-
-
-map <F12> :call Do_CsTag()<CR>
-nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-function Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
-        else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
-        endif
-        silent! execute "!cscope -b"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-endfunction
-
-"进行Tlist的设置
-"TlistUpdate可以更新tags
-map <F3> :silent! Tlist<CR> "按下F3就可以呼出了
-let Tlist_Ctags_Cmd='ctags' "因为我们放在环境变量里，所以可以直接执行
-let Tlist_Use_Right_Window=1 "让窗口显示在右边，0的话就是显示在左边
-let Tlist_Show_One_File=0 "让taglist可以同时展示多个文件的函数列表，如果想只有1个，设置为1
-let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
-let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim
-let Tlist_Process_File_Always=0 "是否一直处理tags.1:处理;0:不处理。不是一直实时更新tags，因为没有必要
-let Tlist_Inc_Winwidth=0
-
 "tagbar面向对象的taglist
-map <F4> :TagbarToggle<CR> 
+map tb :TagbarToggle<CR> 
 
 "对NERD_commenter的设置
 "代码注释的插件
@@ -194,13 +147,14 @@ let NERDTreeChDirMode=2
 "使用cscope
 :set cscopequickfix=s-,c-,d-,i-,t-,e-
 
-"使tab菜单文件在当前窗口打开
-let g:miniBufExplMapCTabSwitchBufs = 1
-"可以用<C-h,j,k,l>切换到上下左右的窗口中去
-"let g:miniBufExplMapWindowNavVim = 1
-"用<C-箭头键>切换到上下左右窗口中去
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplModSelTarget = 1 
+"noremap <C-J>     <C-W>j
+"noremap <C-K>     <C-W>k
+"noremap <C-H>     <C-W>h
+"noremap <C-L>     <C-W>l
+
+"minibuffer
+noremap <C-L>   :MBEbn<CR>
+noremap <C-H> :MBEbp<CR>
 
 "代码自动补全
 filetype plugin indent on
@@ -243,8 +197,8 @@ if has("gui_running")
 endif 
 
 "align 配置
-set nocp 
-filetype plugin on 
+"set nocp 
+"filetype plugin on 
 
 "---------------------------------------------------------------
 " csupport
