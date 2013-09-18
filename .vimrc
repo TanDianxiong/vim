@@ -11,6 +11,8 @@ Bundle 'gmarik/vundle'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'fholgado/minibufexpl.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline-fonts'
 
 Bundle 'AutoComplPop'
 Bundle 'ctags.vim'
@@ -128,7 +130,7 @@ let NERDTreeHighlightCursorline=1 "是否高亮显示光标所在行
 " NERDTreeQuitOnOpen 打开文件后是否关闭NerdTree窗口
 " NERDTreeShowBookmarks 是否默认显示书签列表
 " NERDTreeShowFiles 是否默认显示文件
-let NERDTreeShowHidden=1 "是否默认显示隐藏文件
+let NERDTreeShowHidden=0 "是否默认显示隐藏文件
 let NERDTreeShowLineNumbers=0 "是否默认显示行号
 " NERDTreeSortOrder 排序规则
 " NERDTreeStatusline 窗口状态栏
@@ -171,20 +173,18 @@ endfunction
 set noerrorbells 
 
 " 在被分割的窗口间显示空白，便于阅读 
-set fillchars=vert:\ ,stl:\ ,stlnc:\ 
-
 " 在搜索的时候忽略大小写 
 set ignorecase 
 
 "Doxygen风格注释
-let g:DoxygenToolkit_commentType = "PHP"
+"let g:DoxygenToolkit_commentType = "PHP"
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
 let g:DoxygenToolkit_paramTag_pre="@Param " 
 let g:DoxygenToolkit_returnTag="@Returns   " 
 let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
 let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
 let g:DoxygenToolkit_authorName="chenxiaonan" 
-let g:DoxygenToolkit_licenseTag="My own license"  
+let g:DoxygenToolkit_licenseTag="seanchen"  
 
 "indent guides 函数对齐线
 let g:indent_guides_guide_size=1
@@ -218,7 +218,12 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "powerline
 let g:Powerline_symbols = 'fancy'
 set nocompatible
-set t_Co=256
-let g:Powerline_cache_enabled = 1
-"let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
 set laststatus=2   " Always show the statusline"
+set t_Co=256
+let g:Powerline_symbols_override = {
+            \ 'BRANCH': [0x2213],
+            \ 'LINE': 'L',
+            \ }
+let g:Powerline_mode_n = 'NORMAL'
+let g:Powerline_stl_path_style = 'full'
+"let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
