@@ -14,7 +14,7 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/powerline-fonts'
 
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 Bundle 'ctags.vim'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'JSON.vim'
