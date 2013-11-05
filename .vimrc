@@ -94,7 +94,7 @@ set incsearch "在输入要搜索的文字时，vim会实时匹配
 set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
 
 "tagbar面向对象的taglist
-map tb :TagbarToggle<CR> 
+map <F4> :TagbarToggle<CR> 
 
 "对NERD_commenter的设置
 "代码注释的插件
