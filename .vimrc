@@ -231,8 +231,6 @@ let g:Powerline_symbols_override = {
 let g:Powerline_mode_n = 'NORMAL'
 let g:Powerline_stl_path_style = 'full'
 "let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
-<<<<<<< HEAD
-"
 nnoremap <F5> :w<CR> :silent make<CR>
 inoremap <F5> <Esc>:w<CR>:silent make<CR>
 vnoremap <F5> :<C-U>:w<CR>:silent make<CR
