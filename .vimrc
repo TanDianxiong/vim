@@ -9,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'https://github.com/scrooloose/nerdtree.git'
+Bundle 'https://github.com/scrooloose/nerdcommenter.git'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'plasticboy/vim-markdown'
 "Bundle 'fholgado/minibufexpl.vim'
@@ -25,7 +26,6 @@ Bundle 'ctags.vim'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'JSON.vim'
 Bundle 'Markdown'
-Bundle 'nerdtree'
 Bundle 'pydoc.vim'
 Bundle 'pyflakes.vim'
 Bundle 'python.vim'
@@ -104,10 +104,6 @@ set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
 "tagbar面向对象的taglist
 map <F4> :TagbarToggle<CR> 
 
-"对NERD_commenter的设置
-"代码注释的插件
-let mapleader = ","
-let NERDShutUp=1
 
 "代码折叠
 set foldmethod=indent "折叠方式
@@ -235,6 +231,7 @@ let g:Powerline_symbols_override = {
 let g:Powerline_mode_n = 'NORMAL'
 let g:Powerline_stl_path_style = 'full'
 "let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
+<<<<<<< HEAD
 "
 nnoremap <F5> :w<CR> :silent make<CR>
 inoremap <F5> <Esc>:w<CR>:silent make<CR>
@@ -254,3 +251,8 @@ function! ToPdf()
 endfunction
 :nmap <silent> <F5> :call ToHtml()<CR>
 :nmap <silent> <F6> :call ToPdf()<CR>
+
+"对NERD_commenter的设置
+"代码注释的插件
+let mapleader = ','
+"let NERDShutUp=1
