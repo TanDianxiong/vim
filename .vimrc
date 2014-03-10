@@ -10,9 +10,14 @@ Bundle 'gmarik/vundle'
 
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'fholgado/minibufexpl.vim'
+Bundle 'plasticboy/vim-markdown'
+"Bundle 'fholgado/minibufexpl.vim'
 "Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'https://github.com/bling/vim-airline'
+"Bundle 'https://github.com/shad/vim-markdown-preview.git'
+Bundle 'https://github.com/uguu-org/vim-matrix-screensaver.git'
+Bundle 'https://github.com/aklt/plantuml-syntax.git'
 Bundle 'Lokaltog/powerline-fonts'
 
 "Bundle 'AutoComplPop'
@@ -29,6 +34,8 @@ Bundle 'Tagbar'
 Bundle 'UltiSnips'
 Bundle 'vim-indent-guides'
 Bundle 'xml.vim'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 filetype plugin indent on     " required!
 
@@ -156,8 +163,8 @@ let NERDTreeChDirMode=2
 "noremap <C-L>     <C-W>l
 
 "minibuffer
-noremap <C-L>   :MBEbn<CR>
-noremap <C-H> :MBEbp<CR>
+"noremap <C-L>   :MBEbn<CR>
+"noremap <C-H> :MBEbp<CR>
 
 "代码自动补全
 filetype plugin indent on
@@ -228,3 +235,22 @@ let g:Powerline_symbols_override = {
 let g:Powerline_mode_n = 'NORMAL'
 let g:Powerline_stl_path_style = 'full'
 "let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
+"
+nnoremap <F5> :w<CR> :silent make<CR>
+inoremap <F5> <Esc>:w<CR>:silent make<CR>
+vnoremap <F5> :<C-U>:w<CR>:silent make<CR
+
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_initial_foldlevel=1
+
+function! ToHtml()
+    exec 'w'
+    exec "!pandoc -s -S --self-contained -c style.css % -o %<.html "
+endfunction
+
+function! ToPdf()
+    exec 'w'
+    exec "!pandoc  % -o %<.pdf --latex-engine=xelatex --template=pm-template.latex"
+endfunction
+:nmap <silent> <F5> :call ToHtml()<CR>
+:nmap <silent> <F6> :call ToPdf()<CR>
