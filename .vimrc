@@ -1,3 +1,5 @@
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030,cp936
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -20,6 +22,7 @@ Bundle 'https://github.com/bling/vim-airline'
 Bundle 'https://github.com/uguu-org/vim-matrix-screensaver.git'
 Bundle 'https://github.com/aklt/plantuml-syntax.git'
 Bundle 'Lokaltog/powerline-fonts'
+Bundle 'godlygeek/tabular'
 
 "Bundle 'AutoComplPop'
 Bundle 'ctags.vim'
@@ -80,6 +83,8 @@ else
     "智能缩进，相应的有cindent，官方说autoindent可以支持各种文件的缩进，但是效果会比只支持C/C++的cindent效果会差一点，但笔者并没有看出来
     set autoindent " always set autoindenting on 
 endif " has("autocmd")
+
+set showcmd
 
 "让一个tab等于4个空格
 set tabstop=4
@@ -169,8 +174,8 @@ set completeopt=longest,menu
 "php函数自动补全
 au FileType php call AddPHPFuncList()
 function AddPHPFuncList()
-		set dictionary-=~/.vim/doc/php_funclist.txt dictionary+=~/.vim/doc/php_funclist.txt
-		set complete-=k complete+=k
+        set dictionary-=~/.vim/doc/php_funclist.txt dictionary+=~/.vim/doc/php_funclist.txt
+        set complete-=k complete+=k
 endfunction
 
 " 不让vim发出讨厌的滴滴声 
@@ -185,10 +190,10 @@ set ignorecase
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
 let g:DoxygenToolkit_paramTag_pre="@Param " 
 let g:DoxygenToolkit_returnTag="@Returns   " 
-let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
-let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
-let g:DoxygenToolkit_authorName="chenxiaonan" 
-let g:DoxygenToolkit_licenseTag="seanchen"  
+let g:DoxygenToolkit_blockHeader="" 
+let g:DoxygenToolkit_blockFooter="" 
+let g:DoxygenToolkit_authorName="tandianxiong@sogou-inc.com" 
+let g:DoxygenToolkit_licenseTag="Randal"  
 
 "indent guides 函数对齐线
 let g:indent_guides_guide_size=1
@@ -233,7 +238,7 @@ let g:Powerline_stl_path_style = 'full'
 "let g:Powerline_cache_file='~/.vim/bundle/powerline/Powerline.cache'
 nnoremap <F5> :w<CR> :silent make<CR>
 inoremap <F5> <Esc>:w<CR>:silent make<CR>
-vnoremap <F5> :<C-U>:w<CR>:silent make<CR
+vnoremap <F5> :<C-U>:w<CR>:silent make<CR>
 
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_initial_foldlevel=1
@@ -247,10 +252,28 @@ function! ToPdf()
     exec 'w'
     exec "!pandoc  % -o %<.pdf --latex-engine=xelatex --template=pm-template.latex"
 endfunction
-:nmap <silent> <F5> :call ToHtml()<CR>
-:nmap <silent> <F6> :call ToPdf()<CR>
+":nmap <silent> <F5> :call ToHtml()<CR>
+":nmap <silent> <F6> :call ToPdf()<CR>
 
 "对NERD_commenter的设置
 "代码注释的插件
 let mapleader = ','
 "let NERDShutUp=1
+ 
+" Language:     PlantUML
+" Maintainer:   Aaron C. Meadows &lt; language name at shadowguarddev dot com&gt;
+" Last Change:  19-Jun-2012
+" Version:      0.1
+"
+if exists("g:loaded_plantuml_plugin")
+    finish
+endif
+let g:loaded_plantuml_plugin = 1
+
+if !exists("g:plantuml_executable_script")
+    let g:plantuml_executable_script='java -jar /search/tools/plantuml.jar -tsvg'
+endif
+let s:makecommand=g:plantuml_executable_script." %"
+
+" define a sensible makeprg for plantuml files
+autocmd Filetype plantuml let &l:makeprg=s:makecommand
