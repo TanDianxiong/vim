@@ -46,6 +46,7 @@ filetype plugin indent on     " required!
 set encoding=utf-8
 "显示行号
 set nu 
+"set relativenumber
 "set cursorline "高亮显示光标所在行
 "set cursorcolumn"高亮显示光标所在行
 
@@ -192,7 +193,7 @@ let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   " 
 let g:DoxygenToolkit_blockHeader="" 
 let g:DoxygenToolkit_blockFooter="" 
-let g:DoxygenToolkit_authorName="tandianxiong@sogou-inc.com" 
+let g:DoxygenToolkit_authorName="tandianxiong@gmail.com" 
 let g:DoxygenToolkit_licenseTag="Randal"  
 
 "indent guides 函数对齐线
